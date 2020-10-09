@@ -1,0 +1,7 @@
+score_ID;eventID;scoreChangedBy
+101;SalesOrderCreated;50
+101;ConferenceAttended;30
+101;DocumentDownload;10
+101;EmailOpened;1
+101;EmailClickThrough;2
+101;ComplaintCreated;-5

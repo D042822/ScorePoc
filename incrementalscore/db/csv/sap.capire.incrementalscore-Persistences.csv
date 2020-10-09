@@ -1,0 +1,4 @@
+score_ID;PersistenceFrequency;ExecutionStartDate;ExecutionStartWeekday;ExecutionStartHour;NumKeptVersions
+101;1;0;99;1;60
+102;2;0;7;0;10
+103;3;1;99;0;6

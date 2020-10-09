@@ -1,0 +1,4 @@
+ID;Name;subjectOrigin;subjectType;subjectKey;isActive
+101;Marketing Contact Engagement Score;SMC;Contact;InteractionContactUUID;1
+102;Service Quality Score;Service;Service;ServiceUUID;0
+103;Customer Satisfaction Score;Sales;Customer;CustomerID;0
