@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "dummy-review": "file:/home/user/projects/dummy-review/dummy-review-1.0.0.tgz",
     "@sap/cds": "^4",
     "express": "^4"
   },

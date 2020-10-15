@@ -25,3 +25,5 @@ service IncrementScoreService {
   }
 }
 
+// Adding reviews via capire-reviews service
+using { sap.capire.reviews.ReviewsService } from 'dummy-review';
