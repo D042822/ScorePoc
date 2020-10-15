@@ -1,0 +1,8 @@
+curl -X POST http://localhost:4004/reviews/Reviews \
+-H "Content-Type: application/json" \
+-d '{
+"ID":"201",
+"subject":"Wuthering Heights",
+"rating":5,
+"title":"My favourite book!"
+}'

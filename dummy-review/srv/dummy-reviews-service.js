@@ -27,14 +27,31 @@ module.exports = cds.service.impl((srv) => {
 
   // Emit an event to inform subscribers about new avg ratings for reviewed subjects
   // ( Note: req.on.succeeded ensures we only do that if there's no error )
-  srv.after(['CREATE', 'UPDATE', 'DELETE'], 'Reviews', async (_, req) => {
-    const { subject } = req.data
-    const { rating } = await cds.transaction(req).run(
-      SELECT.one(['avg(rating) as rating']).from(Reviews).where({ subject })
+  
+//   srv.after(['CREATE', 'UPDATE', 'DELETE'], 'Reviews', async (_, req) => {
+//     const { subject } = req.data
+//     const { rating } = await cds.transaction(req).run(
+//       SELECT.one(['avg(rating) as rating']).from(Reviews).where({ subject })
+//     )
+//     req.on('succeeded', () => {
+//       srv.emit('reviewed', { subject, rating })
+//       console.log(`Reviewed event was emitted for book "${subject}" with rating ${rating}.`)
+//     })
+//   })   
+
+    srv.after(['CREATE'], 'Reviews', async (_, req) => {
+    const { ID, subject, rating } = req.data
+    const { reviewer,date } = await cds.transaction(req).run(
+      SELECT.one(['reviewer', 'date']).from(Reviews).where({ ID })
     )
     req.on('succeeded', () => {
-      srv.emit('reviewed', { subject, rating })
-      console.log(`Reviewed event was emitted for book "${subject}" with rating ${rating}.`)
+      if (rating >= 3) {
+        srv.emit('positiveReviewCreated', { reviewer, subject, rating, date })
+        console.log(`Positive Review is created for "${subject}" with rating ${rating} by ${reviewer}.`)
+      } else {
+        srv.emit('reviewCreated', { reviewer, subject, rating, date })
+        console.log(`Review is created for "${subject}" with rating ${rating} by ${reviewer}.`)
+      }
     })
-  })   
+  }) 
 })
