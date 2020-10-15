@@ -1,1 +1,1 @@
-using from './srv/dummy-reviews-service';
+using from './srv/dummy-review';

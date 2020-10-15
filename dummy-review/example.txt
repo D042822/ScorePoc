@@ -6,3 +6,12 @@ curl -X POST http://localhost:4004/reviews/Reviews \
 "rating":5,
 "title":"My favourite book!"
 }'
+
+curl -X POST http://localhost:4004/reviews/Reviews \
+-H "Content-Type: application/json" \
+-d '{
+"ID":"202",
+"subject":"Wuthering Heights",
+"rating":1,
+"title":"Not my type of book!"
+}'
